@@ -11,8 +11,9 @@ import java.awt.event.MouseEvent;
 
 /**
  * This class is used for ...
- * @autor Paola-J Rodriguez-C paola.rodriguez@correounivalle.edu.co
- * @version v.1.0.0 date:21/11/2021
+ * @autor Santiago Casañas Tabares 2025301 - Jesus Adrian Peña Güetio 2025513
+ * santiago.casanas@correounivalle.edu.co - jesus.guetio@correounivalle.edu.co
+ * @version v.1.0.0 date:18/12/2021
  */
 public class GUI extends JFrame {
     private static final String AYUDA = "Bienvenido a Carta mayor \n"
@@ -43,7 +44,6 @@ public class GUI extends JFrame {
         //Default JFrame configuration
         this.setTitle("Carta Mayor");
         this.setUndecorated(true);
-        // this.setBackground(new Color(255,255,255,0));
         this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -157,11 +157,6 @@ public class GUI extends JFrame {
         constraints.anchor=GridBagConstraints.CENTER;
         add(resultado, constraints);
 
-
-
-
-
-
     }
 
     /**
@@ -171,8 +166,6 @@ public class GUI extends JFrame {
      */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            /*Baraja b = new Baraja();
-            b.mostrarBaraja();*/
             GUI miProjectGUI = new GUI();
 
         });

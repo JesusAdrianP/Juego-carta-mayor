@@ -1,12 +1,16 @@
 package myProject;
 
 public class ModelCartaMayor {
-        //private Carta carta1, carta2;
-        private Baraja baraja;
-        private Carta cartaUser, cartaPc;
-        private int estado, valorDelPalo;
-        private String[] estadoToString;
+        //atributos
+        private Baraja baraja; //objeto tipo baraja
+        private Carta cartaUser, cartaPc; //dos objetos tipo carta, uno para el usuario otro para el pc
+        private int estado, valorDelPalo; //int estado para saber el estado del juego
+                                          //int valor de palo para asignar un valor numerico a cada palo
+        private String[] estadoToString; //describir cada estado en string
 
+        /**
+         * Constructor de la clase ModelCartaMayor
+         */
         public ModelCartaMayor(){
 
                 estadoToString = new String[1];
@@ -14,6 +18,10 @@ public class ModelCartaMayor {
 
         }
 
+        /**
+         * Determina el ganador del juego, basandose en quién tiene la carta de mayor valor
+         *
+         */
         public void determinarEstadoJuego(){
 
                 if(cartaUser.getNumero() > cartaPc.getNumero()) {
@@ -25,11 +33,19 @@ public class ModelCartaMayor {
                 }
         }
 
+        /**
+         * Baraja las cartas antes antes de iniciar la partida
+         */
         public void barajarModel () {
                 baraja.barajar();
         }
 
 
+        /**
+         * Asigna un valor numerico a cada palo dependiendo de cual sea el palo.(siendo oros el mejor y bastos el peor)
+         * @param carta
+         * @return valorDelPalo
+         */
         public int valorPalo(Carta carta){
                 if(carta.getPalo()=="o"){
                         valorDelPalo=4;
@@ -43,7 +59,11 @@ public class ModelCartaMayor {
                 return valorDelPalo;
         }
 
-
+        /**
+         * determina el ganador del juego, con base en el jugador que sacó la carta con un mejor palo,
+         * en caso de que el numero de ambas cartas sea el mismo
+         *
+         */
         public void rondaPalos() {
                 if(valorPalo(cartaUser)>valorPalo(cartaPc)) {
                         estado=3; //gana el usuario por palos
@@ -54,6 +74,11 @@ public class ModelCartaMayor {
                 }
         }
 
+        /**
+         * Establece un mensaje de texto en el area asignada, con el palo y valor de la carta de la maquina y el usuario,
+         * ademas de un mensaje con base en el resultado de la partida.
+         * @return estadoToString
+         */
 
         public String[] getEstadoToString() {
                 switch (estado) {
@@ -81,11 +106,18 @@ public class ModelCartaMayor {
         }
 
 
-        //obtener la carta del usuario
+        /**
+         * obtener la carta del usuario
+         * @return cartaUser
+         */
         public Carta getCartaUser() {
                 return cartaUser;
         }
 
+        /**
+         * obtener la carta del pc
+         * @return cartaPc
+         */
         public Carta getCartaPc() {
                 return cartaPc;
         }
@@ -93,19 +125,20 @@ public class ModelCartaMayor {
 
 
 
-        /**instancia y establece la carta que se usará durante toda la ronda
+        /**instancia y establece la carta del usuario que se usará durante toda la ronda
          * asi no se crean cartas distintas, sino cada vez que se da a obtener carta usa la misma*/
         public void setCartaUser() {
+
                 cartaUser = baraja.obtenerCarta(0);
         }
 
+        /**instancia y establece la carta del pc que se usará durante toda la ronda
+         * asi no se crean cartas distintas, sino cada vez que se da a obtener carta usa la misma*/
         public void setCartaPc() {
                 cartaPc = baraja.obtenerCarta(1);
         }
 
 
-        public void mostrarBaraja() {
-                 baraja.mostrarBaraja();
-                }
-        }
+
+}
 

@@ -1,15 +1,21 @@
 package myProject;
 
-import java.util.Arrays;
+
 import java.util.Random;
+
+/**
+ * This class is used for ...
+ * @autor Santiago Casañas Tabares 2025301 - Jesus Adrian Peña Güetio 2025513
+ * santiago.casanas@correounivalle.edu.co - jesus.guetio@correounivalle.edu.co
+ * @version v.1.0.0 date:18/12/2021
+ */
 
 public class Baraja {
     //atributes
-    private Carta cartas[];
-    private int cartaAElegir, posSiguienteCarta;
-    private Random random;
-    private Carta carta;
-    private static final int NUM_CARTAS=40;
+    private Carta cartas[]; //array de cartas
+    private int cartaAElegir; //posicion dada para escoger una carta
+    private Random random; //objeto randomizador
+    private static final int NUM_CARTAS=40; //declaración de tamaño del arra de cartas
 
     //metodos
 
@@ -19,7 +25,6 @@ public class Baraja {
      */
     public Baraja() {
         cartas = new Carta[NUM_CARTAS];
-        posSiguienteCarta = 0;
         random = new Random();
         crearBaraja();
         barajar();
@@ -36,11 +41,19 @@ public class Baraja {
 
             for (int j=0;j< Carta.LIMITE_CARTA_PALOS;j++) { //for para los numeros
 
-                if( !( j==7 || j==8 )) {
-                    if(j>=9){
-                        cartas[((i * (Carta.LIMITE_CARTA_PALOS-2)) + (j-2))] = new Carta(j + 1, palos[i]);
+                if( !( j==7 || j==8 )) { //en caso de no ser 7 ni 8
+                    if(j>=9){ //si es mayor o igual a 9
+                        cartas[((i * (Carta.LIMITE_CARTA_PALOS-2)) + (j-2))] = new Carta(j + 1, palos[i]); //coge la posicion del array de palos y lo multiplica
+                                                                                                                  //por el limite de cartas por palo(12) menos dos, porque
+                                                                                                                  //al final son 10 cartas, luego se le suma la posicion de j
+                                                                                                                  // menos 2, para así ponerlo en la posicion correcta sin saltarse
+                                                                                                                  // posiciones. Posteriormente se crea la carta con el j y el i
                     }else{
-                        cartas[((i * (Carta.LIMITE_CARTA_PALOS-2)) + j)] = new Carta(j + 1, palos[i]);
+                        cartas[((i * (Carta.LIMITE_CARTA_PALOS-2)) + j)] = new Carta(j + 1, palos[i]); //coge la posicion del array de palos y lo multiplica
+                                                                                                             //por el limite de cartas por palo(12) menos dos, porque
+                                                                                                             //al final son 10 cartas, luego se le suma la posicion de j,
+                                                                                                             //para así ponerlo en la posicion correcta sin saltarse
+                                                                                                             // posiciones. Posteriormente se crea la carta con el j y el i
                     }
 
                 }
@@ -66,8 +79,8 @@ public class Baraja {
     }
 
     /**
-     * metodo para obtener la primera carta del mazo
-     * @return primera carta
+     * metodo para obtener una clase especifica del mazo
+     * @return carta
      */
     public Carta obtenerCarta(int cartica) {
 
